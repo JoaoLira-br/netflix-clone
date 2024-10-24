@@ -1,27 +1,25 @@
 import React, { useEffect, useRef } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
-import search_icon from '../../assets/search_icon.svg';
-import bell_icon from '../../assets/bell_icon.svg';
-import profile_img from '../../assets/profile_img.png';
-import caret_icon from '../../assets/caret_icon.svg';
+import search_icon from "../../assets/search_icon.svg";
+import bell_icon from "../../assets/bell_icon.svg";
+import profile_img from "../../assets/profile_img.png";
+import caret_icon from "../../assets/caret_icon.svg";
 import { logout } from "../../firebase";
 
-
 const Navbar = () => {
-
   const navRef = useRef();
 
-  useEffect(()=>{
-      window.addEventListener('scroll', ()=>{
-        // if user scrolls past navbar height, change navbar color to dark
-        if(window.scrollY >= 80){
-          navRef.current.classList.add('nav-dark')
-        }else{
-          navRef.current.classList.remove('nav-dark')
-        }
-      })
-},[])
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      // if user scrolls past navbar height, change navbar color to dark
+      if (window.scrollY >= 80) {
+        navRef.current.classList.add("nav-dark");
+      } else {
+        navRef.current.classList.remove("nav-dark");
+      }
+    });
+  }, []);
 
   return (
     <div ref={navRef} className="navbar">
@@ -41,10 +39,16 @@ const Navbar = () => {
         <p>Children</p>
         <img src={bell_icon} alt="bell" />
         <div className="navbar-profile">
-        <img src={profile_img} alt="profile" />
-        <img src={caret_icon} alt="icons" />
+          <img src={profile_img} alt="profile" />
+          <img src={caret_icon} alt="icons" />
           <div className="dropdown">
-            <p onClick={() => {logout()}}>Sign Out of Netflix</p>
+            <p
+              onClick={() => {
+                logout();
+              }}
+            >
+              Sign Out of Netflix
+            </p>
           </div>
         </div>
       </div>

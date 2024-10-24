@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   getAuth,
+  signOut,
 } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -47,7 +48,7 @@ const login = async (email, password) => {
 
 const logout = async () => {
   try {
-    await auth.signOut();
+    await signOut(auth);
   } catch (error) {
     console.error(error);
     toast.error(error.code.split('/')[1].split('-').join(" "))

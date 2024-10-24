@@ -10,18 +10,26 @@ import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const navigate = useNavigate();
+  const refreshPage = () => {
+
+    window.location.reload();
+  }
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
+      console.log(user.email);
+
         console.log("Logged In");
         navigate("/");
       } else {
         console.log("Logged Out");
+        // refreshPage();
         navigate("/login");
+
       }
     });
-  });
+  }, []);
 
   return (
     <div>
