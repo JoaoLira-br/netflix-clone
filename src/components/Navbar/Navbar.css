@@ -20,6 +20,7 @@
 .navbar-left ul{
     display: flex;
     list-style: none;
+    gap: 20px;
 }
 .navbar-left ul li{
     cursor: pointer;
@@ -63,4 +64,7 @@
 .navbar .dropdown p{
     font-size: .8125rem;
     cursor: pointer;
+}
+.nav-dark{
+    background-color: #141414;
 }
