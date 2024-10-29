@@ -40,6 +40,7 @@ const Navbar = () => {
         <img src={bell_icon} alt="bell" />
         <div className="navbar-profile">
           <img src={profile_img} alt="profile" />
+          <span>{}</span>
           <img src={caret_icon} alt="icons" />
           <div className="dropdown">
             <p

@@ -8,10 +8,10 @@ import info_icon from "./../../assets/info_icon.png";
 import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
 
-const Home = () => {
+const Home = ({ user }) => {
   return (
     <div className="home">
-      <Navbar></Navbar>
+      <Navbar user={user}></Navbar>
       <div className="hero">
         <img src={hero_banner} alt="" className="banner-img" />
         <div className="hero-caption">

@@ -9,17 +9,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const [user, setUser] = React.useState(null);
   const navigate = useNavigate();
-  const refreshPage = () => {
 
-    window.location.reload();
-  }
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
       console.log(user.email);
-
+        setUser(user);
         console.log("Logged In");
         navigate("/");
       } else {
@@ -35,7 +33,7 @@ const App = () => {
     <div>
         <ToastContainer theme="dark"></ToastContainer>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home user={user}/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/player/:id" element={<Player />}></Route>
       </Routes>

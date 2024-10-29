@@ -3,7 +3,9 @@ import "./TitleCards.css";
 import cards_data from "../../assets/cards/Cards_data";
 import { Link } from "react-router-dom";
 
+
 const TitleCards = ({ title, category }) => {
+  
   const cardsRef = useRef([]);
   const [apiData, setApiData] = useState([]);
   const options = {
@@ -13,6 +15,7 @@ const TitleCards = ({ title, category }) => {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZDQ0YTY2YTk5YzgzZDk4ZWU0YjJlNGQ3NjYyZjRlNyIsIm5iZiI6MTcyOTY5NDQxNS41NDczODQsInN1YiI6IjY3MTkwOWIxNzY5MTA3ZDc3YjQ3NWY2ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VP8JvVI0T6J-yho0dxnajV8FOea5mdYn7kteZMB-nY4'
     }
   };
+  const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   
 
   useEffect(() => {
@@ -21,7 +24,7 @@ const TitleCards = ({ title, category }) => {
       case "upcoming":
         const today = new Date().toISOString().split('T')[0];
 
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=bd44a66a99c83d98ee4b2e4d7662f4e7&primary_release_date.gte=${today}`, options)
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&primary_release_date.gte=${today}`, options)
         .then(res => res.json())
         .then(res => setApiData(res.results))
         .catch(err => console.error(err));
